@@ -17,21 +17,31 @@ Numerical implementation of the phase-field method using the finite volume appro
 
 The Allen-Cahn equation governs the time evolution of a non-conserved order parameter φ ∈ [0,1], where φ = 1 represents the solid phase and φ = 0 the liquid. The system is initialized with a sharp step interface at x = 100 on a domain of length 200, using a double-well bulk free energy f(φ) = f₀ φ²(1−φ)².
 
-### Steady-State Interface Profile
+### Steady-State Interface Profile & Free Energy
 
-![Order parameter profile](figures/ac_phi.png)
+<table>
+  <tr>
+    <td align="center"><img src="figures/ac_phi.png" width="380"/></td>
+    <td align="center"><img src="figures/ac_energy.png" width="380"/></td>
+  </tr>
+  <tr>
+    <td align="center">Order parameter profile at steady state</td>
+    <td align="center">Total free energy decay vs. time</td>
+  </tr>
+</table>
 
-The diffuse interface profile at steady state shows the characteristic hyperbolic tangent shape. The interface width is controlled by the competition between the gradient penalty K_φ and the bulk energy barrier f₀.
-
-### Free Energy Decay
-
-![Total free energy vs time](figures/ac_energy.png)
-
-The total free energy F(t) decays monotonically to its equilibrium value, confirming thermodynamic consistency. The rapid initial drop corresponds to the sharp-interface relaxation; the slow tail reflects diffuse interface equilibration.
+The diffuse interface profile shows the characteristic hyperbolic tangent shape, with interface width controlled by the competition between the gradient penalty K_φ and the bulk energy barrier f₀. The total free energy F(t) decays monotonically to its equilibrium value, confirming thermodynamic consistency. The rapid initial drop corresponds to sharp-interface relaxation; the slow tail reflects diffuse interface equilibration.
 
 ### Free Energy Density at the Interface
 
-![Free energy density vs x](figures/ac_energy_density.png)
+<table>
+  <tr>
+    <td align="center"><img src="figures/ac_energy_density.png" width="420"/></td>
+  </tr>
+  <tr>
+    <td align="center">Free energy density vs. x at steady state — gradient contribution dominates over bulk at the interface</td>
+  </tr>
+</table>
 
 In the final state, the free energy density is localized entirely at the interface. The gradient contribution f_grad dominates over the bulk contribution f_bulk, consistent with a well-resolved diffuse interface where the bulk phases are fully relaxed.
 
@@ -41,23 +51,32 @@ In the final state, the free energy density is localized entirely at the interfa
 
 The effect of three model parameters on the interface profile and energy landscape was systematically investigated by varying one parameter at a time while holding the others fixed.
 
-### Effect of f₀ (bulk energy barrier height)
+<table>
+  <tr>
+    <td align="center"><img src="figures/ac_f0_study.png" width="560"/></td>
+  </tr>
+  <tr>
+    <td align="center">Effect of f₀ — higher values sharpen the interface and raise total stored energy without affecting interface position</td>
+  </tr>
+</table>
 
-![Effect of f0](figures/ac_f0_study.png)
+<table>
+  <tr>
+    <td align="center"><img src="figures/ac_kphi_study.png" width="560"/></td>
+  </tr>
+  <tr>
+    <td align="center">Effect of K_φ — increasing K_φ widens the interface and increases gradient energy cost while leaving bulk energy largely unaffected</td>
+  </tr>
+</table>
 
-Higher f₀ sharpens the interface and raises the total stored energy. Both bulk and gradient energy contributions scale with f₀, while the interface position remains fixed — confirming that f₀ controls the thermodynamic driving force without affecting interface location.
-
-### Effect of K_φ (gradient energy coefficient)
-
-![Effect of K_phi](figures/ac_kphi_study.png)
-
-Increasing K_φ widens the interface and increases the gradient energy cost. The bulk energy density profile is largely unaffected, confirming that K_φ independently controls interface thickness. The total free energy grows with K_φ due to the broader interfacial region.
-
-### Effect of L (interface mobility)
-
-![Effect of L](figures/ac_L_study.png)
-
-L controls kinetics only — all curves converge to the same final φ(x) profile regardless of L value, while higher L accelerates the approach to equilibrium. This is visible in the F(t) plot where steeper decay corresponds to larger L, with identical plateau values.
+<table>
+  <tr>
+    <td align="center"><img src="figures/ac_L_study.png" width="560"/></td>
+  </tr>
+  <tr>
+    <td align="center">Effect of L — controls kinetics only; all curves converge to the same final φ(x) profile, with higher L accelerating the approach to equilibrium</td>
+  </tr>
+</table>
 
 ---
 
@@ -81,7 +100,14 @@ Physical parameters for the Ni-Al system:
 
 ### 1D Concentration Profile
 
-![1D concentration profile](figures/ch_1d_profile.png)
+<table>
+  <tr>
+    <td align="center"><img src="figures/ch_1d_profile.png" width="420"/></td>
+  </tr>
+  <tr>
+    <td align="center">Final 1D concentration profile — sharp segregation between γ (c = 0.16) and γ' (c = 0.23) phases</td>
+  </tr>
+</table>
 
 The final concentration profile shows sharp segregation between the γ (Al-poor, c = 0.16) and γ' (Al-rich, c = 0.23) phases, with a well-resolved diffuse interface. Computed interfacial energies at steady state:
 
@@ -95,13 +121,21 @@ The near-equal bulk and gradient contributions confirm the interface is at its n
 
 ### 2D Spinodal Decomposition (Animated)
 
-Starting from a Gaussian noise initial condition centered at c₀ = 0.195 on a 100×100 nm² domain, the 2D simulation captures the full spinodal decomposition process from a disordered solid solution into phase-separated γ and γ' domains. Over time, diffuse Al-poor and Al-rich domains nucleate and coarsen, driven purely by free energy minimization. The full time evolution is shown in the animation below.
+Starting from a Gaussian noise initial condition centered at c₀ = 0.195 on a 100×100 nm² domain, the 2D simulation captures the full spinodal decomposition process from a disordered solid solution into phase-separated γ and γ' domains. Over time, diffuse Al-poor and Al-rich domains nucleate and coarsen, driven purely by free energy minimization.
 
-![2D spinodal decomposition animation](figures/2D_spinodal_decomposition.gif)
+<table>
+  <tr>
+    <td align="center"><img src="figures/2D_spinodal_decomposition.gif" width="420"/></td>
+  </tr>
+  <tr>
+    <td align="center">2D spinodal decomposition — Ni-Al system, 100×100 nm², 1000 time steps</td>
+  </tr>
+</table>
 
 ---
 
 ## Requirements
+
 ```bash
 pip install fipy numpy matplotlib scipy
 ```
