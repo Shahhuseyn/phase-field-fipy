@@ -95,11 +95,7 @@ The near-equal bulk and gradient contributions confirm the interface is at its n
 
 ### 2D Spinodal Decomposition (Animated)
 
-Starting from a Gaussian noise initial condition centered at c₀ = 0.195 on a 100×100 nm² domain, the 2D simulation captures the full spinodal decomposition process from a disordered solid solution into phase-separated γ and γ' domains.
-
-![2D initial concentration map](figures/ch_2d_initial.png)
-
-The initial state shows random composition fluctuations spanning the full composition range. Over time, diffuse Al-poor and Al-rich domains nucleate and coarsen, driven purely by free energy minimization. The full time evolution is shown in the animation below.
+Starting from a Gaussian noise initial condition centered at c₀ = 0.195 on a 100×100 nm² domain, the 2D simulation captures the full spinodal decomposition process from a disordered solid solution into phase-separated γ and γ' domains. Over time, diffuse Al-poor and Al-rich domains nucleate and coarsen, driven purely by free energy minimization. The full time evolution is shown in the animation below.
 
 ![2D spinodal decomposition animation](figures/2D_spinodal_decomposition.gif)
 
